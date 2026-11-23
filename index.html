@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eef2f8">
+  <title>Bakaran Mas Bios</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-icon">🔥</div>
+      <div class="brand">
+        <h1>Bakaran Mas Bios</h1>
+        <p id="todayLabel">Memuat tanggal...</p>
+      </div>
+      <button class="qris-btn" id="openQris">▦ &nbsp; QRIS</button>
+      <button class="more-btn" id="menuBtn" aria-label="Menu">⋮</button>
+    </header>
+
+    <section class="balance-card">
+      <div class="balance-head"><span>Saldo hari ini</span><span class="today-pill">Hari ini</span></div>
+      <div class="balance" id="balance">Rp0</div>
+      <div class="totals">
+        <div><span>↑ Total masuk</span><strong id="incomeTotal">Rp0</strong></div>
+        <div><span>↓ Total keluar</span><strong id="expenseTotal">Rp0</strong></div>
+      </div>
+    </section>
+
+    <section class="action-row">
+      <button class="action income-action" id="addIncome"><span class="round">＋</span><span>Tambah<br>Pemasukan</span></button>
+      <button class="action expense-action" id="addExpense"><span class="round">－</span><span>Tambah<br>Pengeluaran</span></button>
+    </section>
+
+    <section class="section">
+      <h2>Menu Cepat</h2>
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="section transactions-section">
+      <div class="section-heading">
+        <h2>Transaksi Terbaru</h2>
+        <button class="text-btn" id="allHistory">Lihat semua</button>
+      </div>
+      <div class="history-date" id="historyDate"></div>
+      <div id="transactions" class="transactions"></div>
+      <div class="empty" id="emptyState">Belum ada transaksi hari ini.</div>
+    </section>
+  </main>
+
+  <button class="floating-add" id="quickRecord">＋ Catat</button>
+
+  <dialog id="transactionDialog">
+    <form id="transactionForm" method="dialog">
+      <div class="dialog-head"><h3 id="formTitle">Tambah Pemasukan</h3><button type="button" class="close" data-close>×</button></div>
+      <input type="hidden" id="kind" value="income">
+      <label>Nama transaksi</label>
+      <input id="txName" maxlength="50" placeholder="Contoh: Bakaran" required>
+      <label>Nominal (Rp)</label>
+      <input id="txAmount" type="number" min="1" inputmode="numeric" placeholder="3000" required>
+      <label>Keterangan (opsional)</label>
+      <input id="txNote" maxlength="100" placeholder="Contoh: beli arang">
+      <button class="submit-btn" type="submit">Simpan transaksi</button>
+    </form>
+  </dialog>
+
+  <dialog id="productDialog">
+    <form id="productForm" method="dialog">
+      <div class="dialog-head"><h3>Tambah Menu</h3><button type="button" class="close" data-close>×</button></div>
+      <label>Nama menu</label><input id="productName" maxlength="35" placeholder="Nama produk" required>
+      <label>Harga (Rp)</label><input id="productPrice" type="number" min="1" inputmode="numeric" placeholder="5000" required>
+      <button class="submit-btn" type="submit">Tambah menu</button>
+    </form>
+  </dialog>
+
+  <dialog id="qrisDialog" class="qris-dialog">
+    <div class="dialog-head"><h3>QRIS Bakaran Mas Bios</h3><button type="button" class="close" data-close>×</button></div>
+    <img src="qris.jpg" alt="QRIS Bakaran Mas Bios" class="qris-image">
+    <p class="qris-caption">Periksa nama merchant sebelum pelanggan melakukan pembayaran.</p>
+  </dialog>
+
+  <dialog id="historyDialog">
+    <div class="dialog-head"><h3>Semua Transaksi</h3><button type="button" class="close" data-close>×</button></div>
+    <div id="allTransactions" class="all-transactions"></div>
+  </dialog>
+
+  <dialog id="menuDialog">
+    <div class="dialog-head"><h3>Pengaturan</h3><button type="button" class="close" data-close>×</button></div>
+    <button class="menu-option" id="addProductOption">＋ Tambah menu penjualan</button>
+    <button class="menu-option" id="resetOption">Reset seluruh data aplikasi</button>
+    <p class="small-note">Data disimpan di perangkat ini. Jangan hapus data browser jika ingin mempertahankan catatan.</p>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
